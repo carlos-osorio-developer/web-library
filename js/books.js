@@ -13,11 +13,15 @@ var metBook = {
   },
 
   addBook : function(){
-    console.log('working');
     let div = document.createElement('div');
     let title = document.createElement('p');
     title.textContent = localStorage.getItem('title');
+    let author = document.createElement('p');
+    author.textContent = localStorage.getItem('author');
+    let separator = document.createElement('hr');
     div.appendChild(title);
+    div.appendChild(author);
+    div.appendChild(separator);
     document.body.appendChild(div);
     console.log('here');
   }
