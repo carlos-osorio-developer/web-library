@@ -1,1 +1,3 @@
-const propBook = { title: null, author: null };
+const propBook = { title: null, author: null, submitButton: document.getElementById('button')
+};
+
