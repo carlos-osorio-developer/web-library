@@ -2,70 +2,95 @@ const propBook = {
   submitButton: document.getElementById('button'),
   contentDiv: document.getElementById('content'),
   removeButtons: document.getElementsByClassName('remove'),
-  bookDivs: document.getElementsByClassName('books'),
   title: localStorage.getItem('title'),
   author: localStorage.getItem('author'),
 };
 
-const createBook = {
-  init() {
-    propBook.submitButton.addEventListener('click', createBook.updateStorage);
-    createBook.updateDOM();
-  },
+class Book {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
+  }
 
-  updateStorage() {
-    const title = propBook.title ? propBook.title.split(',') : [];
-    const author = propBook.author ? propBook.author.split(',') : [];
-    title.push(document.getElementById('title').value);
-    author.push(document.getElementById('author').value);
+  title() {
+    return this.title;
+  }
+
+  author() {
+    return this.author;
+  }
+
+  static init() {
+    propBook.submitButton.addEventListener('click', Book.newBook);
+    Book.updateDOM();
+  }
+
+  static newBook() {
+    const lastBook = new Book(document.getElementById('title').value, document.getElementById('author').value);
+    Book.addToStorage(lastBook.title, lastBook.author);
+  }
+
+  static pushToString(string, item) {
+    const arr = string ? string.split(',') : [];
+    arr.push(item);
+    return arr;
+  }
+
+  static createNewDiv(t, a) {
+    const div = document.createElement('div');
+    div.className = 'books';
+    const divTitle = document.createElement('p');
+    divTitle.textContent = t;
+    const divAuthor = document.createElement('p');
+    divAuthor.textContent = a;
+    const remove = document.createElement('button');
+    remove.textContent = 'Remove';
+    remove.className = 'remove';
+    const separator = document.createElement('hr');
+    div.appendChild(divTitle);
+    div.appendChild(divAuthor);
+    div.appendChild(remove);
+    div.appendChild(separator);
+    propBook.contentDiv.appendChild(div);
+  }
+
+  static addToStorage(t, a) {
+    const title = Book.pushToString(propBook.title, t);
+    const author = Book.pushToString(propBook.author, a);
     localStorage.setItem('title', title);
     localStorage.setItem('author', author);
     propBook.title = localStorage.getItem('title');
     propBook.author = localStorage.getItem('author');
-    createBook.updateDOM();
-  },
+    Book.updateDOM();
+  }
 
-  updateDOM() {
+  static updateDOM() {
     propBook.contentDiv.textContent = '';
     const title = propBook.title ? propBook.title.split(',') : [];
     const author = propBook.author ? propBook.author.split(',') : [];
     for (let i = 0; i < title.length; i += 1) {
-      const div = document.createElement('div');
-      div.className = 'books';
-      const divTitle = document.createElement('p');
-      divTitle.textContent = title[i];
-      const divAuthor = document.createElement('p');
-      divAuthor.textContent = author[i];
-      const remove = document.createElement('button');
-      remove.textContent = 'Remove';
-      remove.className = 'remove';
-      const separator = document.createElement('hr');
-      div.appendChild(divTitle);
-      div.appendChild(divAuthor);
-      div.appendChild(remove);
-      div.appendChild(separator);
-      propBook.contentDiv.prepend(div);
+      this.createNewDiv(title[i], author[i]);
     }
-    createBook.buttonsEvents();
-  },
+    Book.buttonsEvents();
+  }
 
-  buttonsEvents() {
+  static buttonsEvents() {
     for (let i = 0; i < propBook.removeButtons.length; i += 1) {
-      propBook.removeButtons[i].addEventListener('click', () => { createBook.removeStorage(i); });
+      propBook.removeButtons[i].addEventListener('click', () => { Book.removeStorage(i); });
     }
-  },
+  }
 
-  removeStorage(index) {
+  static removeStorage(index) {
     const title = propBook.title ? propBook.title.split(',') : [];
     const author = propBook.author ? propBook.author.split(',') : [];
-    title.splice(title.length - 1 - index, 1);
-    author.splice(author.length - 1 - index, 1);
+    title.splice(index, 1);
+    author.splice(index, 1);
     localStorage.setItem('title', title);
     localStorage.setItem('author', author);
     propBook.title = localStorage.getItem('title');
     propBook.author = localStorage.getItem('author');
-    createBook.updateDOM();
-  },
-};
+    Book.updateDOM();
+  }
+}
 
-createBook.init();
+Book.init();
