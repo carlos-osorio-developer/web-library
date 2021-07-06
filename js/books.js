@@ -4,19 +4,18 @@ const propBook = {
   removeButtons: document.getElementsByClassName('remove'),
   bookDivs: document.getElementsByClassName('books'),
   title: localStorage.getItem('title'),
-  author: localStorage.getItem('author')
+  author: localStorage.getItem('author'),
 };
 
 const createBook = {
-  init() {    
+  init() {
     propBook.submitButton.addEventListener('click', createBook.updateStorage);
     createBook.updateDOM();
   },
 
   updateStorage() {
-    // localStorage.clear();    
-    title = propBook.title ? propBook.title.split(',') : [];
-    author = propBook.author ? propBook.author.split(',') : [];
+    const title = propBook.title ? propBook.title.split(',') : [];
+    const author = propBook.author ? propBook.author.split(',') : [];
     title.push(document.getElementById('title').value);
     author.push(document.getElementById('author').value);
     localStorage.setItem('title', title);
@@ -28,49 +27,45 @@ const createBook = {
 
   updateDOM() {
     propBook.contentDiv.textContent = '';
-    title = propBook.title ? propBook.title.split(',') : [];
-    author = propBook.author ? propBook.author.split(',') : [];
-    for(let i=0; i < title.length; i++) {      
+    const title = propBook.title ? propBook.title.split(',') : [];
+    const author = propBook.author ? propBook.author.split(',') : [];
+    for (let i = 0; i < title.length; i += 1) {
       const div = document.createElement('div');
       div.className = 'books';
-      const div_title = document.createElement('p');    
-      div_title.textContent = title[i];
-      const div_author = document.createElement('p');
-      div_author.textContent = author[i];
+      const divTitle = document.createElement('p');
+      divTitle.textContent = title[i];
+      const divAuthor = document.createElement('p');
+      divAuthor.textContent = author[i];
       const remove = document.createElement('button');
       remove.textContent = 'Remove';
       remove.className = 'remove';
       const separator = document.createElement('hr');
-      div.appendChild(div_title);
-      div.appendChild(div_author);
+      div.appendChild(divTitle);
+      div.appendChild(divAuthor);
       div.appendChild(remove);
       div.appendChild(separator);
       propBook.contentDiv.prepend(div);
     }
-    deleteBook.init();
-  },
-};
-
-const deleteBook = {
-  init() {    
-    for (let i = 0; i < propBook.removeButtons.length; i++) {
-			propBook.removeButtons[i].addEventListener('click', function(){deleteBook.removeStorage(i)})
-		}
+    createBook.buttonsEvents();
   },
 
-  removeStorage(index) {  
-    
-    title = propBook.title ? propBook.title.split(',') : [];    
-    author = propBook.author ? propBook.author.split(',') : [];
+  buttonsEvents() {
+    for (let i = 0; i < propBook.removeButtons.length; i += 1) {
+      propBook.removeButtons[i].addEventListener('click', () => { createBook.removeStorage(i); });
+    }
+  },
+
+  removeStorage(index) {
+    const title = propBook.title ? propBook.title.split(',') : [];
+    const author = propBook.author ? propBook.author.split(',') : [];
     title.splice(title.length - 1 - index, 1);
-    console.log(title.length - index -1);
     author.splice(author.length - 1 - index, 1);
     localStorage.setItem('title', title);
     localStorage.setItem('author', author);
     propBook.title = localStorage.getItem('title');
     propBook.author = localStorage.getItem('author');
     createBook.updateDOM();
-  }
+  },
 };
 
 createBook.init();
