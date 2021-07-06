@@ -53,14 +53,23 @@ const createBook = {
 
 const deleteBook = {
   init() {    
-    for (var i = 0; i < propBook.removeButtons.length; i++) {
-			propBook.removeButtons[i].addEventListener('click', deleteBook.removeDiv);
+    for (let i = 0; i < propBook.removeButtons.length; i++) {
+			propBook.removeButtons[i].addEventListener('click', function(){deleteBook.removeStorage(i)})
 		}
   },
 
-  removeDiv: function() {
-    console.log('Arieeeeeeeeeeel');
-    // propBook.contentDiv.removeChild(propBook.bookDivs[i]);
+  removeStorage(index) {  
+    
+    title = propBook.title ? propBook.title.split(',') : [];    
+    author = propBook.author ? propBook.author.split(',') : [];
+    title.splice(title.length - 1 - index, 1);
+    console.log(title.length - index -1);
+    author.splice(author.length - 1 - index, 1);
+    localStorage.setItem('title', title);
+    localStorage.setItem('author', author);
+    propBook.title = localStorage.getItem('title');
+    propBook.author = localStorage.getItem('author');
+    createBook.updateDOM();
   }
 };
 
