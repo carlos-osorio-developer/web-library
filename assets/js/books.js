@@ -1,3 +1,10 @@
+class Book {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
+  }
+}
+
 const propBook = {
   submitButton: document.getElementById('button'),
   contentDiv: document.getElementById('content'),
