@@ -8,39 +8,45 @@ const propBook = {
 };
 
 const createBook = {
-  init() {
+  init() {    
+    propBook.submitButton.addEventListener('click', createBook.updateStorage);
+    createBook.updateDOM();
+  },
+
+  updateStorage() {
+    // localStorage.clear();    
+    title = propBook.title ? propBook.title.split(',') : [];
+    author = propBook.author ? propBook.author.split(',') : [];
+    title.push(document.getElementById('title').value);
+    author.push(document.getElementById('author').value);
+    localStorage.setItem('title', title);
+    localStorage.setItem('author', author);
+    propBook.title = localStorage.getItem('title');
+    propBook.author = localStorage.getItem('author');
+    createBook.updateDOM();
+  },
+
+  updateDOM() {
+    propBook.contentDiv.textContent = '';
     title = propBook.title ? propBook.title.split(',') : [];
     author = propBook.author ? propBook.author.split(',') : [];
     for(let i=0; i < title.length; i++) {      
       const div = document.createElement('div');
       div.className = 'books';
-      const title = document.createElement('p');    
-      title.textContent = localStorage.getItem('title');
-      const author = document.createElement('p');
-      author.textContent = localStorage.getItem('author');
+      const div_title = document.createElement('p');    
+      div_title.textContent = title[i];
+      const div_author = document.createElement('p');
+      div_author.textContent = author[i];
       const remove = document.createElement('button');
       remove.textContent = 'Remove';
       remove.className = 'remove';
       const separator = document.createElement('hr');
-      div.appendChild(title);
-      div.appendChild(author);
+      div.appendChild(div_title);
+      div.appendChild(div_author);
       div.appendChild(remove);
       div.appendChild(separator);
       propBook.contentDiv.prepend(div);
     }
-    propBook.submitButton.addEventListener('click', createBook.updateStorage);
-  },
-
-  updateStorage() {
-    // localStorage.clear();    
-    title.push(document.getElementById('title').value);
-    author.push(document.getElementById('author').value);
-    localStorage.setItem('title', title);
-    localStorage.setItem('author', author);
-    createBook.addBook();
-  },
-
-  addBook() {
     deleteBook.init();
   },
 };
