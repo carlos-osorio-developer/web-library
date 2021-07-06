@@ -1,15 +1,12 @@
-# Mushroom-House App
+# Web-Library App
 
-The purpose of this project is to build a blog App, using RoR, which allows users to create articles, upvote them and search within the articles.
+Javascript app which allows users to add and delete books from an online library, using localStorage to stores and display the books.
 
 ## Built With
 
-- Ruby v2.6.6
-- Ruby on Rails v5.2.6
-
-## Live Demo
-
-[Deployed Application](http://mushroom-house.herokuapp.com/)
+- HTML
+- CSS
+- Javascript
 
 
 ## Getting Started
@@ -20,43 +17,40 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-- Ruby and Ruby on Rails installed on your computer
+1. Vs code
 
-- Postgres: >=9.5
+2. Terminal (Bash)
 
-- A github account
+3. Linter tests
 
-- A terminal with your github account logged in
+4. Git
+
 
 ### Setup
 
 - Use your github account and your terminal to clone this repository to your computer:
 
-`git clone git@github.com:carlos-osorio-developer/mushroom-house.git`
+`git clone git@github.com:carlos-osorio-developer/web-library.git`
 
 - Go to the cloned directory:
-`cd mushroom-house`
+`cd web-library`
 
-- Run `bundler install` to install the Gems for the project
-
-- Run `yarn install` to install the project dependencies
-
-- Run `rails db:create` to create the database
-
-- Run `rails db:migrate` to setup the database
-
-- Run `rails db:seed` to populate the database (IMPORTANT)
-
-- Run `rspec` to execute the tests
 
 ### Usage
 
-* Remember to run `rails db:seed` before this
-
-- Run `rails s` and go to `http://localhost:3000/` in your browser.
+Run index.html in your preferred browser.
 
 
-## Author
+## Authors
+
+
+👤 **Nikos Pountzas**
+
+- GitHub: [pountzas](https://github.com/pountzas)
+
+- Twitter: [@pountzas20](https://twitter.com/pountzas20)
+
+- LinkedIn: [Nikos Pountzas](https://www.linkedin.com/in/nikos-pountzas/)
 
 👤 **Carlos Osorio**
 
