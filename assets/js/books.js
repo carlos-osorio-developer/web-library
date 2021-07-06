@@ -4,11 +4,11 @@ class Book {
     this.author = author;
   }
 
-  title(){
+  title() {
     return this.title;
   }
 
-  author(){
+  author() {
     return this.author;
   }
 }
@@ -16,7 +16,7 @@ class Book {
 const propBook = {
   submitButton: document.getElementById('button'),
   contentDiv: document.getElementById('content'),
-  removeButtons: document.getElementsByClassName('remove'),  
+  removeButtons: document.getElementsByClassName('remove'),
   title: localStorage.getItem('title'),
   author: localStorage.getItem('author'),
 };
@@ -28,17 +28,17 @@ const createBook = {
   },
 
   newBook() {
-    const lastBook = new Book(document.getElementById('title').value, document.getElementById('author').value);        
+    const lastBook = new Book(document.getElementById('title').value, document.getElementById('author').value);
     createBook.addToStorage(lastBook.title, lastBook.author);
   },
 
-  pushToString(string, item){
+  pushToString(string, item) {
     const arr = string ? string.split(',') : [];
-    arr.push(item);    
+    arr.push(item);
     return arr;
   },
 
-  createNewDiv(t,a){
+  createNewDiv(t, a) {
     const div = document.createElement('div');
     div.className = 'books';
     const divTitle = document.createElement('p');
@@ -56,9 +56,9 @@ const createBook = {
     propBook.contentDiv.appendChild(div);
   },
 
-  addToStorage(t,a) {
-    title = createBook.pushToString(propBook.title, t);
-    author = createBook.pushToString(propBook.author, a);
+  addToStorage(t, a) {
+    const title = createBook.pushToString(propBook.title, t);
+    const author = createBook.pushToString(propBook.author, a);
     localStorage.setItem('title', title);
     localStorage.setItem('author', author);
     propBook.title = localStorage.getItem('title');
@@ -71,7 +71,7 @@ const createBook = {
     const title = propBook.title ? propBook.title.split(',') : [];
     const author = propBook.author ? propBook.author.split(',') : [];
     for (let i = 0; i < title.length; i += 1) {
-      this.createNewDiv(title[i], author[i])
+      this.createNewDiv(title[i], author[i]);
     }
     createBook.buttonsEvents();
   },
