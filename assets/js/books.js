@@ -3,28 +3,40 @@ class Book {
     this.title = title;
     this.author = author;
   }
+
+  title(){
+    return this.title;
+  }
+
+  author(){
+    return this.author;
+  }
 }
 
 const propBook = {
   submitButton: document.getElementById('button'),
   contentDiv: document.getElementById('content'),
-  removeButtons: document.getElementsByClassName('remove'),
-  bookDivs: document.getElementsByClassName('books'),
+  removeButtons: document.getElementsByClassName('remove'),  
   title: localStorage.getItem('title'),
   author: localStorage.getItem('author'),
 };
 
 const createBook = {
   init() {
-    propBook.submitButton.addEventListener('click', createBook.updateStorage);
+    propBook.submitButton.addEventListener('click', createBook.newBook);
     createBook.updateDOM();
   },
 
-  updateStorage() {
+  newBook() {
+    const lastBook = new Book(document.getElementById('title').value, document.getElementById('author').value);        
+    createBook.addToStorage(lastBook.title, lastBook.author);
+  },
+
+  addToStorage(t,a) {
     const title = propBook.title ? propBook.title.split(',') : [];
     const author = propBook.author ? propBook.author.split(',') : [];
-    title.push(document.getElementById('title').value);
-    author.push(document.getElementById('author').value);
+    title.push(t);
+    author.push(a);
     localStorage.setItem('title', title);
     localStorage.setItem('author', author);
     propBook.title = localStorage.getItem('title');
