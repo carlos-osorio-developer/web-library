@@ -8,5 +8,10 @@
     "stylelint-config-standard": "^21.0.0",
     "stylelint-csstree-validator": "^1.9.0",
     "stylelint-scss": "^3.19.0"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.2.6",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.2.4"
   }
 }
