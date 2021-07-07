@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/main.css">
   <title>Web Library</title>
 </head>
 <body>
-  <h1>Web Library</h1>
-  <div id="content">    
+  <h1 class="text-center font-bold m-6 text-3xl">Web Library</h1>
+  <div id="content" class="text-center border-2 w-3/4 mx-auto">    
   </div>
-  <form>
-    <input type="text" id="title" placeholder="Title">
-    <br><br>
-    <input type="text" id="author" placeholder="Author">
-    <br><br>
-    <input type="submit" value="Add" id="button" onclick="return false">      
+  <form class="flex flex-col items-center">
+    <h2 class="font-bold m-6 text-xl">Add a book</h2>
+    <input type="text" id="title" class="my-2 px-1 border rounded border-black" placeholder="Title">
+    <input type="text" id="author" class="my-2 px-1 border rounded border-black" placeholder="Author">
+    <input type="submit" value="Add" id="button" class="my-2 py-1 px-2 cursor-pointer btn bg-green-500" onclick="return false">      
   </form>
     
   <script src="assets/js/books.js"></script>
