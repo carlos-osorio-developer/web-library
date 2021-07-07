@@ -41,10 +41,10 @@ class Book {
     div.className = 'books flex justify-between my-1 py-1 bg-gray-400';
     const divTitle = document.createElement('p');
     divTitle.textContent = t;
-    divTitle.className = 'w-1/5'
+    divTitle.className = 'w-1/5';
     const divAuthor = document.createElement('p');
-    divAuthor.textContent = 'by ' + a;
-    divAuthor.className = 'w-1/5'
+    divAuthor.textContent = `by ${a}`;
+    divAuthor.className = 'w-1/5';
     const remove = document.createElement('button');
     remove.textContent = 'Remove';
     remove.className = 'remove w-1/5 btn bg-red-600';
