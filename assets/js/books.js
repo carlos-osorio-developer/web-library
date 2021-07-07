@@ -38,14 +38,16 @@ class Book {
 
   static createNewDiv(t, a) {
     const div = document.createElement('div');
-    div.className = 'books';
+    div.className = 'books flex justify-between';
     const divTitle = document.createElement('p');
     divTitle.textContent = t;
+    divTitle.className = 'w-1/5'
     const divAuthor = document.createElement('p');
     divAuthor.textContent = a;
+    divAuthor.className = 'w-1/5'
     const remove = document.createElement('button');
     remove.textContent = 'Remove';
-    remove.className = 'remove';
+    remove.className = 'remove w-1/5';
     const separator = document.createElement('hr');
     div.appendChild(divTitle);
     div.appendChild(divAuthor);
