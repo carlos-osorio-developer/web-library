@@ -11,7 +11,28 @@
   },
   "dependencies": {
     "autoprefixer": "^10.2.6",
+    "postcss": "^8.0.0",
     "postcss-cli": "^8.3.1",
-    "tailwindcss": "^2.2.4"
-  }
+    "tailwindcss": "^2.2.4",
+    "win-node-env": "^0.4.0"
+  },
+  "name": "web-library",
+  "description": "Javascript app which allows users to add and delete books from an online library, using localStorage to stores and display the books.",
+  "version": "1.0.0",
+  "main": "postcss.config.js",
+  "scripts": {
+    "build:css": "postcss ./src/tailwind.css -o ./assets/css/main.css",
+    "build": "NODE_ENV=production postcss ./src/tailwind.css -o ./assets/css/main.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlos-osorio-developer/web-library.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carlos-osorio-developer/web-library/issues"
+  },
+  "homepage": "https://github.com/carlos-osorio-developer/web-library#readme"
 }
