@@ -47,7 +47,7 @@ class Book {
     divAuthor.className = 'w-1/5'
     const remove = document.createElement('button');
     remove.textContent = 'Remove';
-    remove.className = 'remove w-1/5 btn';
+    remove.className = 'remove w-1/5 btn bg-red-600';
     const separator = document.createElement('hr');
     div.appendChild(divTitle);
     div.appendChild(divAuthor);

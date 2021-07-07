@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .btn {
-  @apply bg-red-600 text-white rounded border border-black;
+  @apply text-white rounded border border-black;
 }
