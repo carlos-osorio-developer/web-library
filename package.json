@@ -1,20 +1,19 @@
 {
   "devDependencies": {
+    "autoprefixer": "^10.2.6",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.30.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.4",
+    "postcss": "^8.3.5",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
     "stylelint-csstree-validator": "^1.9.0",
-    "stylelint-scss": "^3.19.0"
+    "stylelint-scss": "^3.19.0",
+    "tailwindcss": "^2.2.4"
   },
   "dependencies": {
-    "autoprefixer": "^10.2.6",
-    "postcss": "^8.0.0",
-    "postcss-cli": "^8.3.1",
-    "tailwindcss": "^2.2.4",
-    "win-node-env": "^0.4.0"
+    "postcss-cli": "^8.3.1"
   },
   "name": "web-library",
   "description": "Javascript app which allows users to add and delete books from an online library, using localStorage to stores and display the books.",
