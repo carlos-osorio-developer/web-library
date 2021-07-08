@@ -13,13 +13,15 @@
     "tailwindcss": "^2.2.4"
   },
   "dependencies": {
-    "postcss-cli": "^8.3.1"
+    "postcss-cli": "^8.3.1",
+    "postcss-combine-duplicated-selectors": "^10.0.3"
   },
   "name": "web-library",
   "description": "Javascript app which allows users to add and delete books from an online library, using localStorage to stores and display the books.",
   "version": "1.0.0",
   "main": "postcss.config.js",
   "scripts": {
+    "delete:duplicated": "postcss ./assets/css/main.css --use postcss-combine-duplicated-selectors --output ./assets/css/main.css",
     "build:css": "postcss ./src/tailwind.css -o ./assets/css/main.css",
     "build": "NODE_ENV=production postcss ./src/tailwind.css -o ./assets/css/main.css"
   },

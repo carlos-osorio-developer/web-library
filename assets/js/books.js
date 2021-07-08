@@ -38,7 +38,7 @@ class Book {
 
   static createNewDiv(t, a) {
     const div = document.createElement('div');
-    div.className = 'books flex justify-between my-1 py-1 bg-gray-400';
+    div.className = 'books flex justify-between py-1 bg-gray-400';
     const divTitle = document.createElement('p');
     divTitle.textContent = t;
     divTitle.className = 'w-1/5';
