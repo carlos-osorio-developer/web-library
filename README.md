@@ -35,6 +35,9 @@ To get a local copy up and running follow these simple example steps.
 - Go to the cloned directory:
 `cd web-library`
 
+- Run the following command to install dependencies:
+`npm install`
+
 
 ### Usage
 
